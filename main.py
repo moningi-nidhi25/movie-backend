@@ -1,0 +1,42 @@
+from fastapi import FastAPI, HTTPException
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+app = FastAPI()
+
+API_KEY = os.getenv("OMDB_API_KEY")
+BASE_URL = "http://www.omdbapi.com/"
+
+@app.get("/")
+def home():
+    return {"message": "Movie Backend API is running 🚀"}
+
+@app.get("/search")
+def search_movies(query: str):
+    params = {
+        "apikey": API_KEY,
+        "s": query
+    }
+    response = requests.get(BASE_URL, params=params).json()
+
+    if response.get("Response") == "False":
+        raise HTTPException(status_code=404, detail="Movie not found")
+
+    return response
+
+@app.get("/movie/{movie_id}")
+def get_movie(movie_id: str):
+    params = {
+        "apikey": API_KEY,
+        "i": movie_id
+    }
+    response = requests.get(BASE_URL, params=params).json()
+
+    if response.get("Response") == "False":
+        raise HTTPException(status_code=404, detail="Movie not found")
+
+    return response
+print("API KEY:", API_KEY)
