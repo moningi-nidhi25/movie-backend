@@ -1,8 +1,9 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 import os
 from dotenv import load_dotenv
-from fastapi.middleware.cors import CORSMiddleware
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -48,4 +49,3 @@ def get_movie(movie_id: str):
         raise HTTPException(status_code=404, detail="Movie not found")
 
     return response
-print("API KEY:", API_KEY)
