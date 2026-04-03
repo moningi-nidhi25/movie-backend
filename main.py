@@ -2,6 +2,15 @@ from fastapi import FastAPI, HTTPException
 import requests
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all (ok for now)
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 load_dotenv()
 
