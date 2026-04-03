@@ -4,6 +4,9 @@ import requests
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -13,9 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-load_dotenv()
 
-app = FastAPI()
 
 API_KEY = os.getenv("OMDB_API_KEY")
 BASE_URL = "http://www.omdbapi.com/"
