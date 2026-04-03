@@ -159,8 +159,8 @@ uv run uvicorn main:app --reload
 
 ### 6️⃣ Open in Browser
 
-* API: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-* Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+* API: [https://movie-backend-xew0.onrender.com](https://movie-backend-xew0.onrender.com)
+* Docs: [https://movie-backend-xew0.onrender.com/docs](https://movie-backend-xew0.onrender.com/docs)
 
 ---
 
